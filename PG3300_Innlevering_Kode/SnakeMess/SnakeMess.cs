@@ -33,7 +33,7 @@ namespace SnakeMess
 			short newDir = 2; // 0 = up, 1 = right, 2 = down, 3 = left
 			short last = newDir;
 			int boardW = Console.WindowWidth, boardH = Console.WindowHeight;
-			Random rng = new Random();
+			Random random = new Random();
 			Point app = new Point();
 			List<Point> snake = new List<Point>();
 			snake.Add(new Point(10, 10)); snake.Add(new Point(10, 10)); snake.Add(new Point(10, 10)); snake.Add(new Point(10, 10));
@@ -41,7 +41,7 @@ namespace SnakeMess
 			Console.Title = "Høyskolen Kristiania - SNAKE";
 			Console.ForegroundColor = ConsoleColor.Green; Console.SetCursorPosition(10, 10); Console.Write("@");
 			while (true) {
-				app.X = rng.Next(0, boardW); app.Y = rng.Next(0, boardH);
+				app.X = random.Next(0, boardW); app.Y = random.Next(0, boardH);
 				bool spot = true;
 				foreach (Point i in snake)
 					if (i.X == app.X && i.Y == app.Y) {
@@ -102,7 +102,7 @@ namespace SnakeMess
 							gameOver = true;
 						else {
 							while (true) {
-								app.X = rng.Next(0, boardW); app.Y = rng.Next(0, boardH);
+								app.X = random.Next(0, boardW); app.Y = random.Next(0, boardH);
 								bool found = true;
 								foreach (Point i in snake)
 									if (i.X == app.X && i.Y == app.Y) {
