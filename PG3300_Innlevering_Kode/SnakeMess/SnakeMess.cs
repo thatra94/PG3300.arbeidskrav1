@@ -96,11 +96,7 @@ namespace SnakeMess
 						gameOver = true;
 					else if (newH.Y < 0 || newH.Y >= boardHeight)
 						gameOver = true;
-<<<<<<< HEAD
-					if (newH.X == app.X && newH.Y == app.Y) {
-=======
 					if (newH.X == food.X && newH.Y == food.Y) {
->>>>>>> 612653e189955654f2a31ff1aaa84e88b0572ff3
 						if (snake.Count + 1 >= boardWidth * boardHeight)
 							// No more room to place apples - game over.
 							gameOver = true;
