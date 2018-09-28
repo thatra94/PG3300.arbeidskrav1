@@ -32,7 +32,7 @@ namespace SnakeMess
 			bool gameOver = false, pause = false, inUse = false;
 			short newDir = 2; // 0 = up, 1 = right, 2 = down, 3 = left
 			short last = newDir;
-			int boardW = Console.WindowWidth, boardH = Console.WindowHeight;
+			int boardWidth = Console.WindowWidth, boardHeight = Console.WindowHeight;
 			Random random = new Random();
 			Point food = new Point();
 			List<Point> snake = new List<Point>();
@@ -41,7 +41,7 @@ namespace SnakeMess
 			Console.Title = "Høyskolen Kristiania - SNAKE";
 			Console.ForegroundColor = ConsoleColor.Green; Console.SetCursorPosition(10, 10); Console.Write("@");
 			while (true) {
-				food.X = random.Next(0, boardW); food.Y = random.Next(0, boardH);
+				food.X = random.Next(0, boardWidth); food.Y = random.Next(0, boardHeight);
 				bool spot = true;
 				foreach (Point i in snake)
 					if (i.X == food.X && i.Y == food.Y) {
@@ -92,21 +92,21 @@ namespace SnakeMess
 							newH.X -= 1;
 							break;
 					}
-					if (newH.X < 0 || newH.X >= boardW)
+					if (newH.X < 0 || newH.X >= boardWidth)
 						gameOver = true;
-					else if (newH.Y < 0 || newH.Y >= boardH)
+					else if (newH.Y < 0 || newH.Y >= boardHeight)
 						gameOver = true;
 <<<<<<< HEAD
 					if (newH.X == app.X && newH.Y == app.Y) {
 =======
 					if (newH.X == food.X && newH.Y == food.Y) {
 >>>>>>> 612653e189955654f2a31ff1aaa84e88b0572ff3
-						if (snake.Count + 1 >= boardW * boardH)
+						if (snake.Count + 1 >= boardWidth * boardHeight)
 							// No more room to place apples - game over.
 							gameOver = true;
 						else {
 							while (true) {
-								food.X = random.Next(0, boardW); food.Y = random.Next(0, boardH);
+								food.X = random.Next(0, boardWidth); food.Y = random.Next(0, boardHeight);
 								bool found = true;
 								foreach (Point i in snake)
 									if (i.X == food.X && i.Y == food.Y) {
