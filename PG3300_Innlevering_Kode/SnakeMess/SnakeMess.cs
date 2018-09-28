@@ -53,8 +53,8 @@ namespace SnakeMess
 					break;
 				}
 			}
-			Stopwatch t = new Stopwatch();
-			t.Start();
+			Stopwatch time = new Stopwatch();
+			time.Start();
 			while (!gameOver) {
 				if (Console.KeyAvailable) {
 					ConsoleKeyInfo cki = Console.ReadKey(true);
@@ -72,9 +72,9 @@ namespace SnakeMess
 						newDir = 3;
 				}
 				if (!pause) {
-					if (t.ElapsedMilliseconds < 100)
+					if (time.ElapsedMilliseconds < 100)
 						continue;
-					t.Restart();
+					time.Restart();
 					Point tail = new Point(snake.First());
 					Point head = new Point(snake.Last());
 					Point newH = new Point(head);
