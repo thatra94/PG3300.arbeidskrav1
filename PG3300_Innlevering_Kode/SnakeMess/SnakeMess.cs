@@ -42,19 +42,19 @@ namespace SnakeMess
 			Console.ForegroundColor = ConsoleColor.Green; Console.SetCursorPosition(10, 10); Console.Write("@");
 			while (true) {
 				food.X = random.Next(0, boardW); food.Y = random.Next(0, boardH);
-				bool spot = true;
+				bool freeSpot = true;
 				foreach (Point i in snake)
 					if (i.X == food.X && i.Y == food.Y) {
-						spot = false;
+						freeSpot = false;
 						break;
 					}
-				if (spot) {
+				if (freeSpot) {
 					Console.ForegroundColor = ConsoleColor.Green; Console.SetCursorPosition(food.X, food.Y); Console.Write("$");
 					break;
 				}
 			}
-			Stopwatch t = new Stopwatch();
-			t.Start();
+			Stopwatch time = new Stopwatch();
+			time.Start();
 			while (!gameOver) {
 				if (Console.KeyAvailable) {
 					ConsoleKeyInfo cki = Console.ReadKey(true);
@@ -72,9 +72,9 @@ namespace SnakeMess
 						newDir = 3;
 				}
 				if (!pause) {
-					if (t.ElapsedMilliseconds < 100)
+					if (time.ElapsedMilliseconds < 100)
 						continue;
-					t.Restart();
+					time.Restart();
 					Point tail = new Point(snake.First());
 					Point head = new Point(snake.Last());
 					Point newH = new Point(head);
