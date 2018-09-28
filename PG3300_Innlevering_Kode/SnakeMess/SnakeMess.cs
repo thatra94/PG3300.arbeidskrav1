@@ -13,7 +13,7 @@ using System.Diagnostics;
 //
 //          -Tomas
 //
-//			funker?
+//			funker? joa
 namespace SnakeMess
 {
 	class Point
