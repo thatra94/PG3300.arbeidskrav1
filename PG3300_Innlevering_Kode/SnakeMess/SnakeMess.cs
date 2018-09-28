@@ -41,7 +41,7 @@ namespace SnakeMess
 			Console.Title = "Høyskolen Kristiania - SNAKE";
 			Console.ForegroundColor = ConsoleColor.Green; Console.SetCursorPosition(10, 10); Console.Write("@");
 			while (true) {
-				food.X = random.Next(0, boardW); food.Y = random.Next(0, boardH);
+				food.X = random.Next(0, boardWidth); food.Y = random.Next(0, boardHeight);
 				bool freeSpot = true;
 				foreach (Point i in snake)
 					if (i.X == food.X && i.Y == food.Y) {
