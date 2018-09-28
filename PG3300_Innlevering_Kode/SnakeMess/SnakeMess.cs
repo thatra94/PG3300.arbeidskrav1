@@ -34,22 +34,22 @@ namespace SnakeMess
 			short last = newDir;
 			int boardW = Console.WindowWidth, boardH = Console.WindowHeight;
 			Random random = new Random();
-			Point app = new Point();
+			Point food = new Point();
 			List<Point> snake = new List<Point>();
 			snake.Add(new Point(10, 10)); snake.Add(new Point(10, 10)); snake.Add(new Point(10, 10)); snake.Add(new Point(10, 10));
 			Console.CursorVisible = false;
 			Console.Title = "Høyskolen Kristiania - SNAKE";
 			Console.ForegroundColor = ConsoleColor.Green; Console.SetCursorPosition(10, 10); Console.Write("@");
 			while (true) {
-				app.X = random.Next(0, boardW); app.Y = random.Next(0, boardH);
+				food.X = random.Next(0, boardW); food.Y = random.Next(0, boardH);
 				bool spot = true;
 				foreach (Point i in snake)
-					if (i.X == app.X && i.Y == app.Y) {
+					if (i.X == food.X && i.Y == food.Y) {
 						spot = false;
 						break;
 					}
 				if (spot) {
-					Console.ForegroundColor = ConsoleColor.Green; Console.SetCursorPosition(app.X, app.Y); Console.Write("$");
+					Console.ForegroundColor = ConsoleColor.Green; Console.SetCursorPosition(food.X, food.Y); Console.Write("$");
 					break;
 				}
 			}
@@ -96,16 +96,16 @@ namespace SnakeMess
 						gameOver = true;
 					else if (newH.Y < 0 || newH.Y >= boardH)
 						gameOver = true;
-					if (newH.X == app.X && newH.Y == app.Y) {
+					if (newH.X == food.X && newH.Y == food.Y) {
 						if (snake.Count + 1 >= boardW * boardH)
 							// No more room to place apples - game over.
 							gameOver = true;
 						else {
 							while (true) {
-								app.X = random.Next(0, boardW); app.Y = random.Next(0, boardH);
+								food.X = random.Next(0, boardW); food.Y = random.Next(0, boardH);
 								bool found = true;
 								foreach (Point i in snake)
-									if (i.X == app.X && i.Y == app.Y) {
+									if (i.X == food.X && i.Y == food.Y) {
 										found = false;
 										break;
 									}
@@ -131,7 +131,7 @@ namespace SnakeMess
 						if (!inUse) {
 							Console.SetCursorPosition(tail.X, tail.Y); Console.Write(" ");
 						} else {
-							Console.ForegroundColor = ConsoleColor.Green; Console.SetCursorPosition(app.X, app.Y); Console.Write("$");
+							Console.ForegroundColor = ConsoleColor.Green; Console.SetCursorPosition(food.X, food.Y); Console.Write("$");
 							inUse = false;
 						}
 						snake.Add(newH);
