@@ -29,7 +29,7 @@ namespace SnakeMess
 	{
 		public static void Main(string[] arguments)
 		{
-			bool gg = false, pause = false, inUse = false;
+			bool gameOver = false, pause = false, inUse = false;
 			short newDir = 2; // 0 = up, 1 = right, 2 = down, 3 = left
 			short last = newDir;
 			int boardW = Console.WindowWidth, boardH = Console.WindowHeight;
@@ -55,11 +55,11 @@ namespace SnakeMess
 			}
 			Stopwatch t = new Stopwatch();
 			t.Start();
-			while (!gg) {
+			while (!gameOver) {
 				if (Console.KeyAvailable) {
 					ConsoleKeyInfo cki = Console.ReadKey(true);
 					if (cki.Key == ConsoleKey.Escape)
-						gg = true;
+						gameOver = true;
 					else if (cki.Key == ConsoleKey.Spacebar)
 						pause = !pause;
 					else if (cki.Key == ConsoleKey.UpArrow && last != 2)
@@ -93,13 +93,13 @@ namespace SnakeMess
 							break;
 					}
 					if (newH.X < 0 || newH.X >= boardW)
-						gg = true;
+						gameOver = true;
 					else if (newH.Y < 0 || newH.Y >= boardH)
-						gg = true;
+						gameOver = true;
 					if (newH.X == app.X && newH.Y == app.Y) {
 						if (snake.Count + 1 >= boardW * boardH)
 							// No more room to place apples - game over.
-							gg = true;
+							gameOver = true;
 						else {
 							while (true) {
 								app.X = rng.Next(0, boardW); app.Y = rng.Next(0, boardH);
@@ -121,11 +121,11 @@ namespace SnakeMess
 						foreach (Point x in snake)
 							if (x.X == newH.X && x.Y == newH.Y) {
 								// Death by accidental self-cannibalism.
-								gg = true;
+								gameOver = true;
 								break;
 							}
 					}
-					if (!gg) {
+					if (!gameOver) {
 						Console.ForegroundColor = ConsoleColor.Yellow;
 						Console.SetCursorPosition(head.X, head.Y); Console.Write("0");
 						if (!inUse) {
