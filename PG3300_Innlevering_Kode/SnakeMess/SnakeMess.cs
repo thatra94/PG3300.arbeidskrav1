@@ -29,9 +29,12 @@ namespace SnakeMess
 			short last = newDir;
 			int boardWidth = Console.WindowWidth, boardHeight = Console.WindowHeight;
 
+<<<<<<< HEAD
 			Random random = new Random();
 			//Point food = new Point();
 
+=======
+>>>>>>> f246e632664412299f87ab5d10029e013cdb602a
 			var snake = new Snake();
 
 			Console.CursorVisible = false;
