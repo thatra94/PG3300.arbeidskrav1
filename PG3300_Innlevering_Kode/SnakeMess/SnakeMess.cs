@@ -52,6 +52,8 @@ namespace SnakeMess
 				}
 			}*/
 
+            var food = new Food();
+
 			Stopwatch time = new Stopwatch();
 			time.Start();
 			while (!gameOver) {
@@ -100,7 +102,7 @@ namespace SnakeMess
 							// No more room to place apples - game over.
 							gameOver = true;
 						else {
-							while (true) {
+							/*while (true) {
 								food.X = random.Next(0, boardWidth); food.Y = random.Next(0, boardHeight);
 								bool found = true;
 								foreach (Point i in snake.GetSnake())
@@ -112,7 +114,8 @@ namespace SnakeMess
 									inUse = true;
 									break;
 								}
-							}
+							}*/
+                            var food = new Food();
 						}
 					}
 					if (!inUse) {
