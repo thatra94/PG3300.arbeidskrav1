@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskName": "task-Food",
+      "appliesTo": "PG3300_Innlevering_Kode/SnakeMess/Food.cs",
+      "type": "launch"
+    }
+  ]
+}
