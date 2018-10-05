@@ -52,7 +52,7 @@ namespace SnakeMess
 				}
 			}*/
 
-            var food = new Food();
+            var food = new Food(boardWidth, boardHeight);
 
 			Stopwatch time = new Stopwatch();
 			time.Start();
@@ -115,7 +115,7 @@ namespace SnakeMess
 									break;
 								}
 							}*/
-                            var food = new Food();
+                            var food = new Food(boardWidth, boardHeight);
 						}
 					}
 					if (!inUse) {
