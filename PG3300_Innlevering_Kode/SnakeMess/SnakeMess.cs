@@ -30,7 +30,7 @@ namespace SnakeMess
 			int boardWidth = Console.WindowWidth, boardHeight = Console.WindowHeight;
 
 			Random random = new Random();
-			Point food = new Point();
+			//Point food = new Point();
 
 			var snake = new Snake();
 
@@ -52,7 +52,7 @@ namespace SnakeMess
 				}
 			}*/
 
-            var food = new Food(boardWidth, boardHeight);
+            Food food = new Food(boardWidth, boardHeight);
 
 			Stopwatch time = new Stopwatch();
 			time.Start();
@@ -115,7 +115,7 @@ namespace SnakeMess
 									break;
 								}
 							}*/
-                            var food = new Food(boardWidth, boardHeight);
+                            food = new Food(boardWidth, boardHeight);
 						}
 					}
 					if (!inUse) {

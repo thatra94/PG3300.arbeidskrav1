@@ -2,19 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
-using Snake;
 using SnakeMess;
 
 namespace SnakeMess
 {
 
-    public class Food
+    public class Food : Point
     {
         Point newFood = new Point();
         Random random = new Random();
 
 
-        public Food(int boardWidth, int boardHeigth)
+        public Food(int boardWidth, int boardHeight)
         {
             newFood.X = random.Next(0, boardWidth);
             newFood.Y = random.Next(0, boardHeight);            
