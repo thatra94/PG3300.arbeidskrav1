@@ -36,3 +36,7 @@ B:\Google Drive\skole2018\PGR3300_software_design\PG3300.arbeidskrav1\PG3300_Inn
 B:\Google Drive\skole2018\PGR3300_software_design\PG3300.arbeidskrav1\PG3300_Innlevering_Kode\SnakeMess\obj\x86\Debug\SnakeMess.csproj.CoreCompileInputs.cache
 B:\Google Drive\skole2018\PGR3300_software_design\PG3300.arbeidskrav1\PG3300_Innlevering_Kode\SnakeMess\obj\x86\Debug\SnakeMess.exe
 B:\Google Drive\skole2018\PGR3300_software_design\PG3300.arbeidskrav1\PG3300_Innlevering_Kode\SnakeMess\obj\x86\Debug\SnakeMess.pdb
+C:\Users\Erlend\Documents\GitHub\PG3300.arbeidskrav1\PG3300_Innlevering_Kode\SnakeMess\bin\Debug\Properties\AssemblyInfo.cs
+C:\Users\Erlend\Documents\GitHub\PG3300.arbeidskrav1\PG3300_Innlevering_Kode\SnakeMess\bin\Debug\SnakeMess.exe.config
+C:\Users\Erlend\Documents\GitHub\PG3300.arbeidskrav1\PG3300_Innlevering_Kode\SnakeMess\bin\Debug\SnakeMess.exe
+C:\Users\Erlend\Documents\GitHub\PG3300.arbeidskrav1\PG3300_Innlevering_Kode\SnakeMess\bin\Debug\SnakeMess.pdb
