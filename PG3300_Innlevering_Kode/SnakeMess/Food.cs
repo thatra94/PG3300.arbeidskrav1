@@ -13,7 +13,7 @@ namespace SnakeMess
         Random random = new Random();
 
 
-        public Food(int boardWidth, int boardHeight)
+        public Food(int boardWidth, int boardHeight, Snake snake)
         {
             newFood.X = random.Next(0, boardWidth);
             newFood.Y = random.Next(0, boardHeight);            
