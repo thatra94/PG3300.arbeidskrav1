@@ -1,12 +1,50 @@
 ﻿using System;
+using System.Collections.Generic;
+using SnakeMess;
+using System.Linq;
 
-public class Snake
+namespace SnakeMess
 {
-
-
-	public Snake()
+	public class Snake
 	{
+
 		List<Point> snake = new List<Point>();
-		snake.Add(new Point(10, 10)); snake.Add(new Point(10, 10)); snake.Add(new Point(10, 10)); snake.Add(new Point(10, 10));
+
+		public Snake()
+		{
+			snake.Add(new Point(10, 10)); snake.Add(new Point(10, 10)); snake.Add(new Point(10, 10)); snake.Add(new Point(10, 10));
+		}
+
+		public List<Point> GetSnake()
+		{
+			return snake;
+		}
+
+		public Point GetFirst()
+		{
+			return snake.First();
+		}
+
+		public Point GetLast()
+		{
+			return snake.Last();
+		}
+
+		public int GetCount()
+		{
+			return snake.Count();
+		}
+
+		public void Remove(int x)
+		{
+			snake.RemoveAt(x);
+		}
+
+		public void Add(Point a)
+		{
+			snake.Add(a);
+		}
 	}
+
+
 }

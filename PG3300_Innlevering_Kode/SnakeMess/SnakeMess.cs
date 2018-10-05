@@ -16,34 +16,32 @@ using System.Diagnostics;
 //			funker? joa neida
 namespace SnakeMess
 {
-	class Point
-	{
-		public const string Ok = "Ok";
-
-		public int X; public int Y;
-		public Point(int x = 0, int y = 0) { X = x; Y = y; }
-		public Point(Point input) { X = input.X; Y = input.Y; }
-	}
-
+	
 	class SnakeMess
 	{
+
+		private Point _point = new Point();
+
 		public static void Main(string[] arguments)
 		{
 			bool gameOver = false, pause = false, inUse = false;
 			short newDir = 2; // 0 = up, 1 = right, 2 = down, 3 = left
 			short last = newDir;
 			int boardWidth = Console.WindowWidth, boardHeight = Console.WindowHeight;
+
 			Random random = new Random();
 			Point food = new Point();
-			List<Point> snake = new List<Point>();
-			snake.Add(new Point(10, 10)); snake.Add(new Point(10, 10)); snake.Add(new Point(10, 10)); snake.Add(new Point(10, 10));
+
+			var snake = new Snake();
+
 			Console.CursorVisible = false;
 			Console.Title = "Høyskolen Kristiania - SNAKE";
 			Console.ForegroundColor = ConsoleColor.Green; Console.SetCursorPosition(10, 10); Console.Write("@");
+
 			while (true) {
 				food.X = random.Next(0, boardWidth); food.Y = random.Next(0, boardHeight);
 				bool freeSpot = true;
-				foreach (Point i in snake)
+				foreach (Point i in snake.GetSnake())
 					if (i.X == food.X && i.Y == food.Y) {
 						freeSpot = false;
 						break;
@@ -53,6 +51,7 @@ namespace SnakeMess
 					break;
 				}
 			}
+
 			Stopwatch time = new Stopwatch();
 			time.Start();
 			while (!gameOver) {
@@ -75,8 +74,8 @@ namespace SnakeMess
 					if (time.ElapsedMilliseconds < 100)
 						continue;
 					time.Restart();
-					Point tail = new Point(snake.First());
-					Point head = new Point(snake.Last());
+					Point tail = new Point(snake.GetFirst());
+					Point head = new Point(snake.GetLast());
 					Point newHead = new Point(head);
 					switch (newDir) {
 						case 0:
@@ -97,14 +96,14 @@ namespace SnakeMess
 					else if (newHead.Y < 0 || newHead.Y >= boardHeight)
 						gameOver = true;
 					if (newHead.X == food.X && newHead.Y == food.Y) {
-						if (snake.Count + 1 >= boardWidth * boardHeight)
+						if (snake.GetCount() + 1 >= boardWidth * boardHeight)
 							// No more room to place apples - game over.
 							gameOver = true;
 						else {
 							while (true) {
 								food.X = random.Next(0, boardWidth); food.Y = random.Next(0, boardHeight);
 								bool found = true;
-								foreach (Point i in snake)
+								foreach (Point i in snake.GetSnake())
 									if (i.X == food.X && i.Y == food.Y) {
 										found = false;
 										break;
@@ -117,8 +116,8 @@ namespace SnakeMess
 						}
 					}
 					if (!inUse) {
-						snake.RemoveAt(0);
-						foreach (Point x in snake)
+						snake.Remove(0);
+						foreach (Point x in snake.GetSnake())
 							if (x.X == newHead.X && x.Y == newHead.Y) {
 								// Death by accidental self-cannibalism.
 								gameOver = true;

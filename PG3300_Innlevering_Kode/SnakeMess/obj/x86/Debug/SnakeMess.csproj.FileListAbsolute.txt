@@ -27,3 +27,4 @@ C:\Users\frelu\PG3300.arbeidskrav1\PG3300_Innlevering_Kode\SnakeMess\obj\x86\Deb
 C:\Users\frelu\PG3300.arbeidskrav1\PG3300_Innlevering_Kode\SnakeMess\obj\x86\Debug\SnakeMess.csproj.CoreCompileInputs.cache
 C:\Users\frelu\PG3300.arbeidskrav1\PG3300_Innlevering_Kode\SnakeMess\obj\x86\Debug\SnakeMess.exe
 C:\Users\frelu\PG3300.arbeidskrav1\PG3300_Innlevering_Kode\SnakeMess\obj\x86\Debug\SnakeMess.pdb
+C:\Users\frelu\PG3300.arbeidskrav1\PG3300_Innlevering_Kode\SnakeMess\bin\Debug\SnakeMess.exe.config
