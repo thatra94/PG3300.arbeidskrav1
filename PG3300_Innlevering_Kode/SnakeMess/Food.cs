@@ -17,12 +17,11 @@ namespace SnakeMess
         {
             newFood.X = random.Next(0, boardWidth);
             newFood.Y = random.Next(0, boardHeight);            
-            CheckFreeSpot();
+            CheckFreeSpot(Snake.getSnake());
         }
 
         public void CheckFreeSpot(List<Point> snake)
         {
-            List<Point> snake = Snake.getSnake();
             while (true)
             {
                 bool freeSpot = true;
@@ -32,7 +31,6 @@ namespace SnakeMess
                         freeSpot = false;
                         break;
                     }
-
                 if (freeSpot)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
