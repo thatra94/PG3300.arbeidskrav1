@@ -29,7 +29,7 @@ namespace SnakeMess
 			short last = newDir;
 			int boardWidth = Console.WindowWidth, boardHeight = Console.WindowHeight;
 
-			Random random = new Random();
+			//Random random = new Random();
 			//Point food = new Point();
 
 
