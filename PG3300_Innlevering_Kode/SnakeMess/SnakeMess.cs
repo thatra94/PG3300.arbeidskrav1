@@ -38,19 +38,7 @@ namespace SnakeMess
 			Console.Title = "Høyskolen Kristiania - SNAKE";
 			Console.ForegroundColor = ConsoleColor.Green; Console.SetCursorPosition(10, 10); Console.Write("@");
 
-			while (true) {
-				food.X = random.Next(0, boardWidth); food.Y = random.Next(0, boardHeight);
-				bool freeSpot = true;
-				foreach (Point i in snake.GetSnake())
-					if (i.X == food.X && i.Y == food.Y) {
-						freeSpot = false;
-						break;
-					}
-				if (freeSpot) {
-					Console.ForegroundColor = ConsoleColor.Green; Console.SetCursorPosition(food.X, food.Y); Console.Write("$");
-					break;
-				}
-			}
+            var food = new Food(boardWidth, boardHeight);
 
 			Stopwatch time = new Stopwatch();
 			time.Start();
@@ -100,19 +88,7 @@ namespace SnakeMess
 							// No more room to place apples - game over.
 							gameOver = true;
 						else {
-							while (true) {
-								food.X = random.Next(0, boardWidth); food.Y = random.Next(0, boardHeight);
-								bool found = true;
-								foreach (Point i in snake.GetSnake())
-									if (i.X == food.X && i.Y == food.Y) {
-										found = false;
-										break;
-									}
-								if (found) {
-									inUse = true;
-									break;
-								}
-							}
+							var food = new Food();
 						}
 					}
 					if (!inUse) {
