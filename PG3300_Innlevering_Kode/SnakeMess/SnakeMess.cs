@@ -33,7 +33,7 @@ namespace SnakeMess
 			//Point food = new Point();
 
 
-			Snake snake = new Snake();
+			var snake = new Snake();
 
 			Console.CursorVisible = false;
 			Console.Title = "Høyskolen Kristiania - SNAKE";
@@ -53,7 +53,7 @@ namespace SnakeMess
 				}
 			}*/
 
-            Food food = new Food(boardWidth, boardHeight, snake);
+            Food food = new Food(boardWidth, boardHeight);
 
 			Stopwatch time = new Stopwatch();
 			time.Start();
@@ -116,7 +116,7 @@ namespace SnakeMess
 									break;
 								}
 							}*/
-                            food = new Food(boardWidth, boardHeight, snake);
+                            food = new Food(boardWidth, boardHeight);
 						}
 					}
 					if (!inUse) {
