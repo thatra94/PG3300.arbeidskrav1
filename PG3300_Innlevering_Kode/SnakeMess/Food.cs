@@ -13,11 +13,12 @@ namespace SnakeMess
         Point newFood = new Point();
         Random random = new Random();
 
+
         public Food()
         {
             newFood.X = random.Next(0, boardWidth);
             newFood.Y = random.Next(0, boardHeight);            
-            CheckFreeSpot(Snake.getSnake());
+            CheckFreeSpot(Snake.GetSnake());
         }
 
         public void CheckFreeSpot(List<Point> snake)
