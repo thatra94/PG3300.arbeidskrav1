@@ -15,13 +15,14 @@ namespace SnakeMess
 
         public Food()
         {
-            newFood.X = random.Next(0, SnakeMess.SnakeMess.GetBoardWidth());
-            newFood.Y = random.Next(0, boardHeight);
+            newFood.X = random.Next(0, boardWidth);
+            newFood.Y = random.Next(0, boardHeight);            
+            CheckFreeSpot();
         }
 
         public void CheckFreeSpot(List<Point> snake)
         {
-            List<Point> snake = SnakeMess.Snake.getSnake();
+            List<Point> snake = Snake.getSnake();
             while (true)
             {
                 bool freeSpot = true;

@@ -39,17 +39,7 @@ namespace SnakeMess
 			Console.ForegroundColor = ConsoleColor.Green; Console.SetCursorPosition(10, 10); Console.Write("@");
 
 			while (true) {
-				food.X = random.Next(0, boardWidth); food.Y = random.Next(0, boardHeight);
-				bool freeSpot = true;
-				foreach (Point i in snake.GetSnake())
-					if (i.X == food.X && i.Y == food.Y) {
-						freeSpot = false;
-						break;
-					}
-				if (freeSpot) {
-					Console.ForegroundColor = ConsoleColor.Green; Console.SetCursorPosition(food.X, food.Y); Console.Write("$");
-					break;
-				}
+				var food = new Food();
 			}
 
 			Stopwatch time = new Stopwatch();
