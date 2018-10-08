@@ -37,22 +37,7 @@ namespace SnakeMess
             Console.Title = "Høyskolen Kristiania - SNAKE";
             Console.ForegroundColor = ConsoleColor.Green; Console.SetCursorPosition(10, 10); Console.Write("@");
 
-            while (true)
-            {
-                food.X = random.Next(0, boardWidth); food.Y = random.Next(0, boardHeight);
-                bool freeSpot = true;
-                foreach (Point i in snake.GetSnake())
-                    if (i.X == food.X && i.Y == food.Y)
-                    {
-                        freeSpot = false;
-                        break;
-                    }
-                if (freeSpot)
-                {
-                    Console.ForegroundColor = ConsoleColor.Green; Console.SetCursorPosition(food.X, food.Y); Console.Write("$");
-                    break;
-                }
-            }
+            PlaceFood(boardWidth, boardHeight, random, food, snake);
 
             Stopwatch time = new Stopwatch();
             time.Start();
@@ -60,7 +45,7 @@ namespace SnakeMess
             {
                 if (Console.KeyAvailable)
                 {
-                    NotGameOver(ref gameOver, ref pause, ref newDir, last);
+                    Controls(ref gameOver, ref pause, ref newDir, last);
                 }
                 if (!pause)
                 {
@@ -96,19 +81,12 @@ namespace SnakeMess
                             gameOver = true;
                         else
                         {
-                            inUse = found(boardWidth, boardHeight, random, food, snake);
+                            inUse = Found(boardWidth, boardHeight, random, food, snake);
                         }
                     }
                     if (!inUse)
                     {
-                        snake.Remove(0);
-                        foreach (Point x in snake.GetSnake())
-                            if (x.X == newHead.X && x.Y == newHead.Y)
-                            {
-                                // Death by accidental self-cannibalism.
-                                gameOver = true;
-                                break;
-                            }
+                        gameOver = Death(gameOver, snake, newHead);
                     }
                     if (!gameOver)
                     {
@@ -131,7 +109,41 @@ namespace SnakeMess
             }
         }
 
-        private static bool found(int boardWidth, int boardHeight, Random random, Point food, Snake snake)
+        private static bool Death(bool gameOver, Snake snake, Point newHead)
+        {
+            snake.Remove(0);
+            foreach (Point x in snake.GetSnake())
+                if (x.X == newHead.X && x.Y == newHead.Y)
+                {
+                    // Death by accidental self-cannibalism.
+                    gameOver = true;
+                    break;
+                }
+
+            return gameOver;
+        }
+
+        private static void PlaceFood(int boardWidth, int boardHeight, Random random, Point food, Snake snake)
+        {
+            while (true)
+            {
+                food.X = random.Next(0, boardWidth); food.Y = random.Next(0, boardHeight);
+                bool freeSpot = true;
+                foreach (Point i in snake.GetSnake())
+                    if (i.X == food.X && i.Y == food.Y)
+                    {
+                        freeSpot = false;
+                        break;
+                    }
+                if (freeSpot)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green; Console.SetCursorPosition(food.X, food.Y); Console.Write("$");
+                    break;
+                }
+            }
+        }
+
+        private static bool Found(int boardWidth, int boardHeight, Random random, Point food, Snake snake)
         {
             bool inUse;
             while (true)
@@ -154,7 +166,7 @@ namespace SnakeMess
             return inUse;
         }
 
-        private static void NotGameOver(ref bool gameOver, ref bool pause, ref short newDir, short last)
+        private static void Controls(ref bool gameOver, ref bool pause, ref short newDir, short last)
         {
             ConsoleKeyInfo cki = Console.ReadKey(true);
             if (cki.Key == ConsoleKey.Escape)
