@@ -20,7 +20,6 @@ namespace SnakeMess
     class SnakeMess
     {
 
-
         public static void Main(string[] arguments)
         {
             bool gameOver = false, pause = false, inUse = false;
@@ -35,13 +34,17 @@ namespace SnakeMess
 
             Console.CursorVisible = false;
             Console.Title = "Høyskolen Kristiania - SNAKE";
-            Console.ForegroundColor = ConsoleColor.Green; Console.SetCursorPosition(10, 10); Console.Write("@");
+            Console.ForegroundColor = ConsoleColor.Green; 
+	        Console.SetCursorPosition(10, 10); 
+	        Console.Write("@");
 
-            //Food.PlaceFood(boardWidth, boardHeight, random, food, snake);
+            //Places food on the board
             inUse = Food.PlaceFood(boardWidth, boardHeight, random, food, snake);
 
             Stopwatch time = new Stopwatch();
             time.Start();
+
+			//Main gameloop
             while (!gameOver)
             {
                 if (Console.KeyAvailable)
