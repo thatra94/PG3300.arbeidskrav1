@@ -14,24 +14,27 @@ namespace SnakeMess
         {
         }
 
-        public static void PlaceFood(int boardWidth, int boardHeight, Random random, Point food, Snake snake)
+        public static bool PlaceFood(int boardWidth, int boardHeight, Random random, Point food, Snake snake)
         {
+            bool inUse;
             while (true)
             {
                 food.X = random.Next(0, boardWidth); food.Y = random.Next(0, boardHeight);
-                bool freeSpot = true;
+                bool found = true;
                 foreach (Point i in snake.GetSnake())
                     if (i.X == food.X && i.Y == food.Y)
                     {
-                        freeSpot = false;
+                        found = false;
                         break;
                     }
-                if (freeSpot)
+                if (found)
                 {
-                    Console.ForegroundColor = ConsoleColor.Green; Console.SetCursorPosition(food.X, food.Y); Console.Write("$");
+                    inUse = true;
                     break;
                 }
             }
+
+            return inUse;
         }
     }
 }
