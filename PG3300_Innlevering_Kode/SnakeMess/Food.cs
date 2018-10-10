@@ -7,13 +7,8 @@ using SnakeMess;
 namespace SnakeMess
 {
 
-    public class Food : Point
+    public class Food 
     {
-
-        public Food(int boardWidth, int boardHeight, Snake snake)
-        {
-        }
-
         public static bool PlaceFood(int boardWidth, int boardHeight, Random random, Point food, Snake snake)
         {
             bool inUse;
