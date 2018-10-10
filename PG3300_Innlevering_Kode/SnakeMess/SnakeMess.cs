@@ -88,7 +88,7 @@ namespace SnakeMess
 	                if (newHead.X == food.X && newHead.Y == food.Y)
                     {
                         if (snake.GetCount() + 1 >= boardWidth * boardHeight)
-                            // No more room to place apples - game over.
+                            // No more room to place apples - game over
                             gameOver = true;
                         else
                         {
@@ -98,6 +98,7 @@ namespace SnakeMess
                     }
                     if (!inUse)
                     {
+						// Checks if snake crashes with snake
                         gameOver = Death(gameOver, snake, newHead);
                     }
                     if (!gameOver)
