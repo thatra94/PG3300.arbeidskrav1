@@ -34,7 +34,7 @@ namespace SnakeMess
 			var Controls = new Controls();
 
             Console.CursorVisible = false;
-            Console.Title = "Høyskolen Kristiania - SNAKE";
+            Console.Title = "SNAKE";
             Console.ForegroundColor = ConsoleColor.Green; 
 	        Console.SetCursorPosition(10, 10); 
 	        Console.Write("@");
@@ -60,7 +60,9 @@ namespace SnakeMess
                     Point tail = new Point(snake.GetFirst());
                     Point head = new Point(snake.GetLast());
                     Point newHead = new Point(head);
-                    switch (newDir)
+                    
+	                // Snake switches direction based on changes to newDir set in Controls
+	                switch (newDir)
                     {
                         case 0:
                             newHead.Y -= 1;
@@ -75,17 +77,22 @@ namespace SnakeMess
                             newHead.X -= 1;
                             break;
                     }
-                    if (newHead.X < 0 || newHead.X >= boardWidth)
+                    
+	                // Going out of bounds ends game
+	                if (newHead.X < 0 || newHead.X >= boardWidth)
                         gameOver = true;
                     else if (newHead.Y < 0 || newHead.Y >= boardHeight)
                         gameOver = true;
-                    if (newHead.X == food.X && newHead.Y == food.Y)
+                    
+	                // When an apple is eaten
+	                if (newHead.X == food.X && newHead.Y == food.Y)
                     {
                         if (snake.GetCount() + 1 >= boardWidth * boardHeight)
                             // No more room to place apples - game over.
                             gameOver = true;
                         else
                         {
+							// Keep placing apples.
                             inUse = Food.PlaceFood(boardWidth, boardHeight, random, food, snake);
                         }
                     }
@@ -96,18 +103,24 @@ namespace SnakeMess
                     if (!gameOver)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.SetCursorPosition(head.X, head.Y); Console.Write("0");
+                        Console.SetCursorPosition(head.X, head.Y); 
+	                    Console.Write("0");
                         if (!inUse)
                         {
-                            Console.SetCursorPosition(tail.X, tail.Y); Console.Write(" ");
+                            Console.SetCursorPosition(tail.X, tail.Y); 
+	                        Console.Write(" ");
                         }
                         else
                         {
-                            Console.ForegroundColor = ConsoleColor.Green; Console.SetCursorPosition(food.X, food.Y); Console.Write("$");
+                            Console.ForegroundColor = ConsoleColor.Green; 
+	                        Console.SetCursorPosition(food.X, food.Y); 
+	                        Console.Write("$");
                             inUse = false;
                         }
                         snake.Add(newHead);
-                        Console.ForegroundColor = ConsoleColor.Yellow; Console.SetCursorPosition(newHead.X, newHead.Y); Console.Write("@");
+                        Console.ForegroundColor = ConsoleColor.Yellow; 
+	                    Console.SetCursorPosition(newHead.X, newHead.Y); 
+	                    Console.Write("@");
                         last = newDir;
                     }
                 }
