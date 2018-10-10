@@ -31,6 +31,7 @@ namespace SnakeMess
             Point food = new Point();
 
             var snake = new Snake();
+			var Controls = new Controls();
 
             Console.CursorVisible = false;
             Console.Title = "Høyskolen Kristiania - SNAKE";
@@ -49,7 +50,7 @@ namespace SnakeMess
             {
                 if (Console.KeyAvailable)
                 {
-                    Controls(ref gameOver, ref pause, ref newDir, last);
+                    Controls.Control(ref gameOver, ref pause, ref newDir, last);
                 }
                 if (!pause)
                 {
@@ -127,6 +128,9 @@ namespace SnakeMess
             return gameOver;
         } 
 
+
+
+       /*
         private static void Controls(ref bool gameOver, ref bool pause, ref short newDir, short last)
         {
             ConsoleKeyInfo cki = Console.ReadKey(true);
@@ -143,5 +147,6 @@ namespace SnakeMess
             else if (cki.Key == ConsoleKey.LeftArrow && last != 1)
                 newDir = 3;
         }
+		*/
     }
 }
