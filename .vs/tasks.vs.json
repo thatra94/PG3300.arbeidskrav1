@@ -5,6 +5,11 @@
       "taskName": "task-Food",
       "appliesTo": "PG3300_Innlevering_Kode/SnakeMess/Food.cs",
       "type": "launch"
+    },
+    {
+      "taskName": "task-Class1",
+      "appliesTo": "PG3300_Innlevering_Kode/SnakeMess/Class1.cs",
+      "type": "launch"
     }
   ]
 }

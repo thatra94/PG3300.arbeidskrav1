@@ -32,6 +32,7 @@ namespace SnakeMess
 
             var snake = new Snake();
 			var Controls = new Controls();
+			//var GameBoard = new GameBoard();
 
             Console.CursorVisible = false;
             Console.Title = "SNAKE";
@@ -65,7 +66,7 @@ namespace SnakeMess
                     GameOver(ref gameOver, ref inUse, boardWidth, boardHeight, random, food, snake, newHead);
                     if (!gameOver)
                     {
-                        last = NotGameOver(ref inUse, newDir, food, snake, tail, head, newHead);
+                        last = /*GameBoard.*/NotGameOver(ref inUse, newDir, food, snake, tail, head, newHead);
                     }
                 }
             }
