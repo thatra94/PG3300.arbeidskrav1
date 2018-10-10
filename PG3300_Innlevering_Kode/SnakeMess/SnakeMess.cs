@@ -31,13 +31,13 @@ namespace SnakeMess
             Point food = new Point();
 
             var snake = new Snake();
-			var Controls = new Controls();
+            var Controls = new Controls();
 
             Console.CursorVisible = false;
             Console.Title = "SNAKE";
-            Console.ForegroundColor = ConsoleColor.Green; 
-	        Console.SetCursorPosition(10, 10); 
-	        Console.Write("@");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.SetCursorPosition(10, 10);
+            Console.Write("@");
 
             //Places food on the board
             inUse = Food.PlaceFood(boardWidth, boardHeight, random, food, snake);
@@ -45,7 +45,7 @@ namespace SnakeMess
             Stopwatch time = new Stopwatch();
             time.Start();
 
-			//Main gameloop
+            //Main gameloop
             while (!gameOver)
             {
                 if (Console.KeyAvailable)
@@ -156,6 +156,6 @@ namespace SnakeMess
                 }
 
             return gameOver;
-        } 
+        }
     }
 }
