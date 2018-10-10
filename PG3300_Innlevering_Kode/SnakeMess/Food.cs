@@ -33,7 +33,6 @@ namespace SnakeMess
                     break;
                 }
             }
-
             return inUse;
         }
     }
