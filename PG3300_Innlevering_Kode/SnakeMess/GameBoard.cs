@@ -7,7 +7,7 @@ namespace SnakeMess
 {
 	public class GameBoard
 	{
-		public static short NotGameOver(ref bool inUse, short newDir, Point food, Snake snake, Point tail, Point head,
+		public short NotGameOver(ref bool inUse, short newDir, Point food, Snake snake, Point tail, Point head,
 			Point newHead)
 		{
 			short last;
