@@ -26,10 +26,8 @@ namespace SnakeMess
             short newDir = 2; // 0 = up, 1 = right, 2 = down, 3 = left
             short last = newDir;
             int boardWidth = Console.WindowWidth, boardHeight = Console.WindowHeight;
-
-            Random random = new Random();
-            Point food = new Point();
-
+            var random = new Random();
+            var food = new Point();
             var snake = new Snake();
             var controls = new Controls();
 	        var gameBoard = new GameBoard();
@@ -58,44 +56,17 @@ namespace SnakeMess
                     if (time.ElapsedMilliseconds < 100)
                         continue;
                     time.Restart();
-                    Point tail = new Point(snake.GetFirst());
-                    Point head = new Point(snake.GetLast());
-                    Point newHead = new Point(head);
+                    var tail = new Point(snake.GetFirst());
+                    var head = new Point(snake.GetLast());
+                    var newHead = new Point(head);
 
                     ChangeDirection(newDir, newHead);
-                    GameOver(ref gameOver, ref inUse, boardWidth, boardHeight, random, food, snake, newHead);
+                    gameBoard.GameOver(ref gameOver, ref inUse, boardWidth, boardHeight, random, food, snake, newHead);
                     if (!gameOver)
                     {
                         last = gameBoard.NotGameOver(ref inUse, newDir, food, snake, tail, head, newHead);
                     }
                 }
-            }
-        }
-
-        private static void GameOver(ref bool gameOver, ref bool inUse, int boardWidth, int boardHeight, Random random, Point food, Snake snake, Point newHead)
-        {
-            // Going out of bounds ends game
-            if (newHead.X < 0 || newHead.X >= boardWidth)
-                gameOver = true;
-            else if (newHead.Y < 0 || newHead.Y >= boardHeight)
-                gameOver = true;
-
-            // When an apple is eaten
-            if (newHead.X == food.X && newHead.Y == food.Y)
-            {
-                if (snake.GetCount() + 1 >= boardWidth * boardHeight)
-                    // No more room to place apples - game over
-                    gameOver = true;
-                else
-                {
-                    // Keep placing apples.
-                    inUse = Food.PlaceFood(boardWidth, boardHeight, random, food, snake);
-                }
-            }
-            if (!inUse)
-            {
-                // Checks if snake crashes with snake
-                gameOver = Death(gameOver, snake, newHead);
             }
         }
 
@@ -117,20 +88,6 @@ namespace SnakeMess
                     newHead.X -= 1;
                     break;
             }
-        }
-
-        private static bool Death(bool gameOver, Snake snake, Point newHead)
-        {
-            snake.Remove(0);
-            foreach (Point x in snake.GetSnake())
-                if (x.X == newHead.X && x.Y == newHead.Y)
-                {
-                    // Death by accidental self-cannibalism.
-                    gameOver = true;
-                    break;
-                }
-
-            return gameOver;
         }
     }
 }
