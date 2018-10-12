@@ -34,5 +34,46 @@ namespace SnakeMess
 			last = newDir;
 			return last;
 		}
+
+		public void GameOver(ref bool gameOver, ref bool inUse, int boardWidth, int boardHeight, Random random, Point food, Snake snake, Point newHead)
+		{
+			// Going out of bounds ends game
+			if (newHead.X < 0 || newHead.X >= boardWidth)
+				gameOver = true;
+			else if (newHead.Y < 0 || newHead.Y >= boardHeight)
+				gameOver = true;
+
+			// When an apple is eaten
+			if (newHead.X == food.X && newHead.Y == food.Y)
+			{
+				if (snake.GetCount() + 1 >= boardWidth * boardHeight)
+					// No more room to place apples - game over
+					gameOver = true;
+				else
+				{
+					// Keep placing apples.
+					inUse = Food.PlaceFood(boardWidth, boardHeight, random, food, snake);
+				}
+			}
+			if (!inUse)
+			{
+				// Checks if snake crashes with snake
+				gameOver = Death(gameOver, snake, newHead);
+			}
+		}
+
+		private static bool Death(bool gameOver, Snake snake, Point newHead)
+		{
+			snake.Remove(0);
+			foreach (Point x in snake.GetSnake())
+				if (x.X == newHead.X && x.Y == newHead.Y)
+				{
+					// Death by accidental self-cannibalism.
+					gameOver = true;
+					break;
+				}
+
+			return gameOver;
+		}
 	}
 }
