@@ -32,7 +32,7 @@ namespace SnakeMess
 
             var snake = new Snake();
             var Controls = new Controls();
-	        //var GameBoard = new GameBoard();
+	        var GameBoard = new GameBoard();
 
             Console.CursorVisible = false;
             Console.Title = "SNAKE";

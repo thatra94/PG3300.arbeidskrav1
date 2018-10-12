@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Controls.cs" />
     <Compile Include="Food.cs" />
+    <Compile Include="GameBoard.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
