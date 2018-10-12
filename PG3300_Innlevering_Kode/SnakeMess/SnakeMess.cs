@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 // WARNING: DO NOT code like this. Please. EVER! 
 //          "Aaaargh!" 
@@ -41,10 +42,10 @@ namespace SnakeMess
             //Places food on the board
             inUse = Food.PlaceFood(boardWidth, boardHeight, random, food, snake);
 
-            Stopwatch time = new Stopwatch();
+            var time = new Stopwatch();
             time.Start();
 
-            //Main gameloop
+            //Main game-loop
             while (!gameOver)
             {
                 if (Console.KeyAvailable)
