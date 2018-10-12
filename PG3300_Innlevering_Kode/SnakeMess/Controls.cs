@@ -8,7 +8,7 @@ namespace SnakeMess
 {
 	class Controls
 	{
-		public static void Control(ref bool gameOver, ref bool pause, ref short newDir, short last)
+		public void Control(ref bool gameOver, ref bool pause, ref short newDir, short last)
 		{
 			ConsoleKeyInfo cki = Console.ReadKey(true);
 			if (cki.Key == ConsoleKey.Escape)

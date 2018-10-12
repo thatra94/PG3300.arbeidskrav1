@@ -31,7 +31,7 @@ namespace SnakeMess
             Point food = new Point();
 
             var snake = new Snake();
-            var Controls = new Controls();
+            var controls = new Controls();
 	        var gameBoard = new GameBoard();
 
             Console.CursorVisible = false;
@@ -51,7 +51,7 @@ namespace SnakeMess
             {
                 if (Console.KeyAvailable)
                 {
-                    Controls.Control(ref gameOver, ref pause, ref newDir, last);
+                    controls.Control(ref gameOver, ref pause, ref newDir, last);
                 }
                 if (!pause)
                 {
