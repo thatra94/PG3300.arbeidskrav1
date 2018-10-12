@@ -61,33 +61,13 @@ namespace SnakeMess
                     var head = new Point(snake.GetLast());
                     var newHead = new Point(head);
 
-                    ChangeDirection(newDir, newHead);
+                    controls.ChangeDirection(newDir, newHead);
                     gameBoard.GameOver(ref gameOver, ref inUse, boardWidth, boardHeight, random, food, snake, newHead);
                     if (!gameOver)
                     {
                         last = gameBoard.NotGameOver(ref inUse, newDir, food, snake, tail, head, newHead);
                     }
                 }
-            }
-        }
-
-        private static void ChangeDirection(short newDir, Point newHead)
-        {
-            // Snake switches direction based on changes to newDir set in Controls
-            switch (newDir)
-            {
-                case 0:
-                    newHead.Y -= 1;
-                    break;
-                case 1:
-                    newHead.X += 1;
-                    break;
-                case 2:
-                    newHead.Y += 1;
-                    break;
-                default:
-                    newHead.X -= 1;
-                    break;
             }
         }
     }

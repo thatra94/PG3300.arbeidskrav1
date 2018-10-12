@@ -24,5 +24,25 @@ namespace SnakeMess
 			else if (cki.Key == ConsoleKey.LeftArrow && last != 1)
 				newDir = 3;
 		}
+
+		public void ChangeDirection(short newDir, Point newHead)
+		{
+			// Snake switches direction based on changes to newDir set in Controls
+			switch (newDir)
+			{
+				case 0:
+					newHead.Y -= 1;
+					break;
+				case 1:
+					newHead.X += 1;
+					break;
+				case 2:
+					newHead.Y += 1;
+					break;
+				default:
+					newHead.X -= 1;
+					break;
+			}
+		}
 	}
 }
